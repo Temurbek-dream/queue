@@ -3,6 +3,7 @@ package com.medicine.demo.controller;
 import com.medicine.demo.entity.Doctor;
 import com.medicine.demo.repository.DoctorRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,19 +50,18 @@ public class DoctorController
                       new ResourceNotFoundException(currentdoctor.getNameDoctor()+"This doctor does not exist"));
       doctor.setNameDoctor(currentdoctor.getNameDoctor());
       doctor.setOccupation(currentdoctor.getOccupation());
+      doctor.setNameDoctor(currentdoctor.getNameDoctor());
       final Doctor newStaff=doctorRepository.save(doctor);
       return ResponseEntity.ok(newStaff);
 
     }
-    @GetMapping("/finding")
+    @GetMapping("/order")
     public int counting(@RequestParam(name = "nameDoctor") String nameDoctor)
     {
       Optional<Doctor> doctor= Optional.ofNullable(doctorRepository.findByNameDoctor(nameDoctor));
-
        if (doctor.isPresent())
         {
             counting++;
-
         }
         return counting;
     }

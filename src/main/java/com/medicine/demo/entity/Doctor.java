@@ -21,5 +21,5 @@ public class Doctor
     private String occupation;
 
 ////    @Column(nullable = false)
-//    private int number;
+    private int number;
 }
