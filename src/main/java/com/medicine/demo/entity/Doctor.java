@@ -1,23 +1,26 @@
 package com.medicine.demo.entity;
 
-import lombok.Data;
 
-import javax.persistence.*;
+import com.medicine.demo.entity.template.AbsEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 
 @Data
-@Entity
-public class Doctor
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name = "doctor")
+public class Doctor extends AbsEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private Long id;
-
-    private String nameDoctor;
-
+    @Column(unique = true, nullable = false)
     private String occupation;
 
-    private int number;
-
+    @Column(nullable = false)
+    private int counting;
 
 }
