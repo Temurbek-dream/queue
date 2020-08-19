@@ -9,18 +9,20 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "doctor")
 public class Doctor extends AbsEntity
 {
+
     @Column(unique = true, nullable = false)
     private String occupation;
 
     @Column(nullable = false)
     private int counting;
-
 }
