@@ -23,17 +23,19 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/api")
 public class DoctorController
 {
- private final DoctorRepository doctorRepository;
+    private final DoctorRepository doctorRepository;
     public DoctorController(DoctorRepository doctorRepository) {
         this.doctorRepository = doctorRepository;
     }
 
+    //getting all elements
     @GetMapping("/all")
     public List<Doctor> retrieveAllDoctors()
     {
       return  doctorRepository.findAll();
     }
 
+    //getting one element
     @GetMapping("/all/{id}")
     public EntityModel<Doctor> retrieveStudent(@PathVariable UUID id) {
         Optional<Doctor> doctor = doctorRepository.findById(id);
@@ -50,6 +52,7 @@ public class DoctorController
         return resource;
     }
 
+    //sending data
     @PostMapping("/send")
     public ApiResponse transmittingData(@RequestBody Doctor doctor)
     {
@@ -57,6 +60,7 @@ public class DoctorController
      return new ApiResponse("New doctor has successfully added",true);
     }
 
+    //changing doctor by id
     @PutMapping("/change/{id}")
     public ResponseEntity<Doctor> updating(@PathVariable UUID id,
                                          @Valid @RequestBody Doctor doctor)
