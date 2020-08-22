@@ -1,6 +1,7 @@
 package com.medicine.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.medicine.demo.entity.template.AbsEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -20,9 +22,12 @@ import javax.persistence.MappedSuperclass;
 public class Doctor extends AbsEntity
 {
 
-    @Column(unique = true, nullable = false)
+    @NotBlank
+    @JsonProperty("occupation")
+    @Column(nullable = false)
     private String occupation;
 
     @Column(nullable = false)
+    @JsonProperty("counting")
     private int counting;
 }
