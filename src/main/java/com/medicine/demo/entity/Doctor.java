@@ -14,20 +14,17 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "doctor")
 public class Doctor extends AbsEntity
 {
-
-    @NotBlank
-    @JsonProperty("occupation")
     @Column(nullable = false)
+    @NotBlank
     private String occupation;
 
+
     @Column(nullable = false)
-    @JsonProperty("counting")
-    private int counting;
+    private String description;
 }
